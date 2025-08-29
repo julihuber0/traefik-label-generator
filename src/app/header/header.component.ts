@@ -5,20 +5,7 @@ import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@ang
 @Component({
   selector: 'app-header',
   imports: [],
-  template: `
-    <header class="app-header" role="banner">
-      <div class="brand">
-        <span class="app-title">Traefik Label Generator</span>
-      </div>
-      <button type="button"
-              class="theme-toggle"
-              aria-label="Toggle dark mode"
-              (click)="toggleTheme()">
-        <span class="icon" aria-hidden="true">{{ isDark() ? '🌙' : '☀️' }}</span>
-        <span class="label">{{ isDark() ? 'Dark' : 'Light' }}</span>
-      </button>
-    </header>
-  `,
+  templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {

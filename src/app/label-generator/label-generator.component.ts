@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
   }
 })
 export class LabelGeneratorComponent {
+  private readonly defaultsKey = 'labelGeneratorDefaults';
   // Inputs state as signals
   serviceName = signal('myservice');
   subdomain = signal('dev');
@@ -23,6 +24,24 @@ export class LabelGeneratorComponent {
   traefikNetwork = signal('traefik_traefik');
   enableHttpRedirect = signal(true);
   addIndentation = signal(true);
+
+  constructor() {
+    // load defaults from localStorage if present
+    try {
+      const raw = localStorage.getItem(this.defaultsKey);
+      if (raw) {
+        const d = JSON.parse(raw) as Partial<Record<string, string>>;
+        if (d["serviceName"]) this.serviceName.set(d["serviceName"]);
+        if (d["subdomain"]) this.subdomain.set(d["subdomain"]);
+        if (d["domain"]) this.domain.set(d["domain"]);
+        if (d["servicePort"]) this.servicePort.set(d["servicePort"]);
+        if (d["httpEntrypoint"]) this.httpEntrypoint.set(d["httpEntrypoint"]);
+        if (d["httpsEntrypoint"]) this.httpsEntrypoint.set(d["httpsEntrypoint"]);
+        if (d["certResolver"]) this.certResolver.set(d["certResolver"]);
+        if (d["traefikNetwork"]) this.traefikNetwork.set(d["traefikNetwork"]);
+      }
+    } catch {}
+  }
 
   // Message box
   message = signal<string>('');

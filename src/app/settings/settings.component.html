@@ -1,0 +1,116 @@
+<div class="container">
+  <h2 class="title">Default Values</h2>
+  <div class="grid">
+    <label>
+      <span>Service Name</span>
+      <input type="text" [ngModel]="defaults().serviceName" (ngModelChange)="defaults.set({
+              serviceName: $event,
+              subdomain: defaults().subdomain,
+              domain: defaults().domain,
+              servicePort: defaults().servicePort,
+              httpEntrypoint: defaults().httpEntrypoint,
+              httpsEntrypoint: defaults().httpsEntrypoint,
+              certResolver: defaults().certResolver,
+              traefikNetwork: defaults().traefikNetwork
+            })" />
+    </label>
+    <label>
+      <span>Subdomain</span>
+      <input type="text" [ngModel]="defaults().subdomain" (ngModelChange)="defaults.set({
+                    serviceName: defaults().serviceName,
+                    subdomain: $event,
+                    domain: defaults().domain,
+                    servicePort: defaults().servicePort,
+                    httpEntrypoint: defaults().httpEntrypoint,
+                    httpsEntrypoint: defaults().httpsEntrypoint,
+                    certResolver: defaults().certResolver,
+                    traefikNetwork: defaults().traefikNetwork
+                  })" />
+    </label>
+    <label>
+      <span>Domain</span>
+      <input type="text" [ngModel]="defaults().domain" (ngModelChange)="defaults.set({
+                        serviceName: defaults().serviceName,
+                        subdomain: defaults().subdomain,
+                        domain: $event,
+                        servicePort: defaults().servicePort,
+                        httpEntrypoint: defaults().httpEntrypoint,
+                        httpsEntrypoint: defaults().httpsEntrypoint,
+                        certResolver: defaults().certResolver,
+                        traefikNetwork: defaults().traefikNetwork
+                      })" />
+    </label>
+    <label>
+      <span>Service Port</span>
+      <input type="text" [ngModel]="defaults().servicePort" (ngModelChange)="defaults.set({
+                              serviceName: defaults().serviceName,
+                              subdomain: defaults().subdomain,
+                              domain: defaults().domain,
+                              servicePort: $event,
+                              httpEntrypoint: defaults().httpEntrypoint,
+                              httpsEntrypoint: defaults().httpsEntrypoint,
+                              certResolver: defaults().certResolver,
+                              traefikNetwork: defaults().traefikNetwork
+                            })" />
+    </label>
+    <label>
+      <span>HTTP Entrypoint</span>
+      <input type="text" [ngModel]="defaults().httpEntrypoint" (ngModelChange)="defaults.set({
+                                    serviceName: defaults().serviceName,
+                                    subdomain: defaults().subdomain,
+                                    domain: defaults().domain,
+                                    servicePort: defaults().servicePort,
+                                    httpEntrypoint: $event,
+                                    httpsEntrypoint: defaults().httpsEntrypoint,
+                                    certResolver: defaults().certResolver,
+                                    traefikNetwork: defaults().traefikNetwork
+                                  })" />
+    </label>
+    <label>
+      <span>HTTPS Entrypoint</span>
+      <input type="text" [ngModel]="defaults().httpsEntrypoint" (ngModelChange)="defaults.set({
+                                          serviceName: defaults().serviceName,
+                                          subdomain: defaults().subdomain,
+                                          domain: defaults().domain,
+                                          servicePort: defaults().servicePort,
+                                          httpEntrypoint: defaults().httpEntrypoint,
+                                          httpsEntrypoint: $event,
+                                          certResolver: defaults().certResolver,
+                                          traefikNetwork: defaults().traefikNetwork
+                                        })" />
+    </label>
+    <label>
+      <span>Cert Resolver</span>
+      <input type="text" [ngModel]="defaults().certResolver" (ngModelChange)="defaults.set({
+                                                serviceName: defaults().serviceName,
+                                                subdomain: defaults().subdomain,
+                                                domain: defaults().domain,
+                                                servicePort: defaults().servicePort,
+                                                httpEntrypoint: defaults().httpEntrypoint,
+                                                httpsEntrypoint: defaults().httpsEntrypoint,
+                                                certResolver: $event,
+                                                traefikNetwork: defaults().traefikNetwork
+                                              })" />
+    </label>
+    <label>
+      <span>Traefik Network</span>
+      <input type="text" [ngModel]="defaults().traefikNetwork" (ngModelChange)="defaults.set({
+                                                      serviceName: defaults().serviceName,
+                                                      subdomain: defaults().subdomain,
+                                                      domain: defaults().domain,
+                                                      servicePort: defaults().servicePort,
+                                                      httpEntrypoint: defaults().httpEntrypoint,
+                                                      httpsEntrypoint: defaults().httpsEntrypoint,
+                                                      certResolver: defaults().certResolver,
+                                                      traefikNetwork: $event
+                                                    })" />
+    </label>
+  </div>
+  <div class="actions">
+    <button type="button" (click)="save()">Save Defaults</button>
+  </div>
+
+  @if (showMsg()) {
+    <div class="message-box show">{{ message() }}</div>
+  }
+</div>

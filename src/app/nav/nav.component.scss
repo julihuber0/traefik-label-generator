@@ -1,0 +1,27 @@
+:host.nav-host { display: block; }
+.side-nav {
+  position: sticky;
+  top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  background: var(--card-bg);
+  color: var(--fg);
+  margin: 0.75rem; /* margin on all sides */
+}
+.side-nav a {
+  text-decoration: none;
+  color: var(--fg);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+}
+.side-nav a:hover { background: color-mix(in oklab, var(--fg) 10%, var(--card-bg)); }
+.side-nav a.active { border-color: var(--button-border); background: var(--button-bg); }
+
+@media (max-width: 799px) {
+  .side-nav { position: static; }
+}
