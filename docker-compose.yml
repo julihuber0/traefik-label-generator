@@ -7,7 +7,7 @@ services:
      - "6000:80"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.label-generator.entrypoints=webb"
+      - "traefik.http.routers.label-generator.entrypoints=web"
       - "traefik.http.routers.label-generator.rule=Host(`label-generator.jules-labs.de`)"
       - "traefik.http.middlewares.label-generator-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.label-generator.middlewares=label-generator-https-redirect"
@@ -18,3 +18,9 @@ services:
       - "traefik.http.routers.label-generator-secure.tls.certresolver=certresolver"
       - "traefik.http.services.label-generator.loadbalancer.server.port=80"
       - "traefik.docker.network=traefik_traefik"
+    networks:
+      - traefik_traefik
+
+networks:
+  traefik_traefik:
+    external: true

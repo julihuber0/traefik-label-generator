@@ -9,4 +9,4 @@ RUN npm run build:${BUILD_CONFIG}
 
 FROM nginx:1.29.1-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/dist/brk-ui/browser/ /usr/share/nginx/html
+COPY --from=build /app/dist/traefik-label-generator/browser/ /usr/share/nginx/html
