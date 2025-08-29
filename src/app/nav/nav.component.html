@@ -1,8 +1,8 @@
 <nav class="side-nav" aria-label="Main navigation">
-  <a routerLink="/generate" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+  <a routerLink="/generate" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="linkSelected.emit()">
     🧩 Generate
   </a>
-  <a routerLink="/settings" routerLinkActive="active">
+  <a routerLink="/settings" routerLinkActive="active" (click)="linkSelected.emit()">
     ⚙️ Settings
   </a>
 </nav>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, effect, signal } from '@angular/core';
 
 // Simple header with dark mode toggle. Uses localStorage to persist.
 // No HostBinding/HostListener; host bindings are configured in the decorator.
@@ -13,6 +13,7 @@ import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@ang
   }
 })
 export class HeaderComponent {
+  @Output() menuToggle = new EventEmitter<void>();
   private storageKey = 'theme';
   // Holds whether dark mode is enabled
   isDark = signal<boolean>(false);

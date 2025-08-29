@@ -1,0 +1,12 @@
+<app-header (menuToggle)="toggleNav()" />
+<div class="app-shell">
+  <app-nav class="side"></app-nav>
+  <main class="content"><router-outlet /></main>
+</div>
+
+@if (showNav()) {
+  <div class="overlay-backdrop" (click)="closeNav()"></div>
+  <div class="overlay-drawer" role="dialog" aria-label="Navigation">
+    <app-nav (linkSelected)="onNavSelected()"></app-nav>
+  </div>
+}

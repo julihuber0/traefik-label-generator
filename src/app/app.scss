@@ -6,8 +6,27 @@
 
 @media (max-width: 799px) {
   .app-shell { grid-template-columns: 1fr; }
-  .side { order: 2; }
+  .side { order: 2; display: none; }
   .content { order: 1; }
 }
 
 .content { padding: 0.5rem; }
+
+/* Mobile overlay drawer */
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+.overlay-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: min(80vw, 280px);
+  background: var(--card-bg);
+  box-shadow: 2px 0 12px rgba(0,0,0,.2);
+  z-index: 1001;
+  overflow: auto;
+}
