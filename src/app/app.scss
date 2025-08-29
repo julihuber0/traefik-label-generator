@@ -6,7 +6,7 @@
 
 @media (max-width: 799px) {
   .app-shell { grid-template-columns: 1fr; }
-  .side { order: 2; display: none; }
+  .side { order: 2; display: none !important; }
   .content { order: 1; }
 }
 

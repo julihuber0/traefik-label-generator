@@ -98,6 +98,6 @@
 .copy-button:hover { opacity: 0.9; }
 
 /* Toast */
-.message-box { position: fixed; top: 1rem; right: 1rem; background-color: #10b981; color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); opacity: 0; transition: opacity 0.3s ease-in-out; z-index: 1000; }
+.message-box { position: fixed; top: 5rem; right: 1rem; background-color: #10b981; color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); opacity: 0; transition: opacity 0.3s ease-in-out; z-index: 1000; }
 .message-box.show { opacity: 1; }
 .message-box.error { background-color: #ef4444; }

@@ -12,7 +12,7 @@ interface Defaults {
   traefikNetwork: string;
 }
 
-const STORAGE_KEY = 'labelGeneratorDefaults';
+const STORAGE_KEY = 'traefik-label-generator-defaults';
 
 @Component({
   selector: 'app-settings',

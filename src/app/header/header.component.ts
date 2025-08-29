@@ -14,7 +14,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output, effect, signa
 })
 export class HeaderComponent {
   @Output() menuToggle = new EventEmitter<void>();
-  private storageKey = 'theme';
+  private storageKey = 'traefik-label-generator-theme';
   // Holds whether dark mode is enabled
   isDark = signal<boolean>(false);
 
