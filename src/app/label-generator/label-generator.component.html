@@ -1,0 +1,66 @@
+<div class="container">
+  <h1 class="title">Traefik Label Generator</h1>
+  <p class="subtitle">Enter your Docker Compose service details to generate Traefik labels.</p>
+
+  <div class="input-grid">
+    <div class="input-group">
+      <label for="serviceName">Service Name:</label>
+      <input id="serviceName" type="text" [ngModel]="serviceName()" (ngModelChange)="serviceName.set($event)" placeholder="e.g., myapp" />
+    </div>
+    <div class="input-group">
+      <label for="subdomain">Subdomain:</label>
+      <input id="subdomain" type="text" [ngModel]="subdomain()" (ngModelChange)="subdomain.set($event)" placeholder="e.g., dev" />
+    </div>
+    <div class="input-group">
+      <label for="domain">Domain:</label>
+      <input id="domain" type="text" [ngModel]="domain()" (ngModelChange)="domain.set($event)" placeholder="e.g., example.com" />
+    </div>
+    <div class="input-group">
+      <label for="servicePort">Service Port:</label>
+      <input id="servicePort" type="number" [ngModel]="servicePort()" (ngModelChange)="servicePort.set($event)" placeholder="e.g., 80" />
+    </div>
+    <div class="input-group">
+      <label for="httpEntrypoint">HTTP Entrypoint:</label>
+      <input id="httpEntrypoint" type="text" [ngModel]="httpEntrypoint()" (ngModelChange)="httpEntrypoint.set($event)" placeholder="e.g., web" />
+    </div>
+    <div class="input-group">
+      <label for="httpsEntrypoint">HTTPS Entrypoint:</label>
+      <input id="httpsEntrypoint" type="text" [ngModel]="httpsEntrypoint()" (ngModelChange)="httpsEntrypoint.set($event)" placeholder="e.g., websecure" />
+    </div>
+    <div class="input-group">
+      <label for="certResolver">Cert Resolver:</label>
+      <input id="certResolver" type="text" [ngModel]="certResolver()" (ngModelChange)="certResolver.set($event)" placeholder="e.g., myresolver" />
+    </div>
+    <div class="input-group">
+      <label for="traefikNetwork">Traefik Network:</label>
+      <input id="traefikNetwork" type="text" [ngModel]="traefikNetwork()" (ngModelChange)="traefikNetwork.set($event)" placeholder="e.g., traefik_proxy" />
+    </div>
+  </div>
+
+  <div class="toggles-group">
+    <div class="toggle-container">
+      <label class="switch">
+        <input type="checkbox" [checked]="enableHttpRedirect()" (change)="enableHttpRedirect.set(($any($event.target)).checked)" id="enableHttpRedirect" />
+        <span class="slider"></span>
+      </label>
+      <label for="enableHttpRedirect" class="toggle-label">Enable HTTP Endpoint & HTTPS Redirect</label>
+    </div>
+
+    <div class="toggle-container">
+      <label class="switch">
+        <input type="checkbox" [checked]="addIndentation()" (change)="addIndentation.set(($any($event.target)).checked)" id="addIndentation" />
+        <span class="slider"></span>
+      </label>
+      <label for="addIndentation" class="toggle-label">Add 4-Space Indentation</label>
+    </div>
+  </div>
+
+  <div class="output-area">
+    <button type="button" class="copy-button" (click)="copy()">Copy</button>
+    <pre class="output-pre">{{ formattedLabels() }}</pre>
+  </div>
+
+  @if (messageVisible()) {
+    <div class="message-box" [class.show]="messageVisible()" [class.error]="messageType()==='error'">{{ message() }}</div>
+  }
+</div>
