@@ -1,0 +1,20 @@
+services:
+  label-generator:
+    container_name: label-generator
+    restart: unless-stopped
+    build: .
+    ports:
+     - "6000:80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.label-generator.entrypoints=webb"
+      - "traefik.http.routers.label-generator.rule=Host(`label-generator.jules-labs.de`)"
+      - "traefik.http.middlewares.label-generator-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.label-generator.middlewares=label-generator-https-redirect"
+      - "traefik.http.routers.label-generator-secure.entrypoints=websecure"
+      - "traefik.http.routers.label-generator-secure.rule=Host(`label-generator.jules-labs.de`)"
+      - "traefik.http.routers.label-generator-secure.tls=true"
+      - "traefik.http.routers.label-generator-secure.service=label-generator"
+      - "traefik.http.routers.label-generator-secure.tls.certresolver=certresolver"
+      - "traefik.http.services.label-generator.loadbalancer.server.port=80"
+      - "traefik.docker.network=traefik_traefik"
