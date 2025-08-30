@@ -56,7 +56,7 @@ export class LabelGeneratorComponent {
     const httpEntrypoint = this.httpEntrypoint().trim();
     const httpsEntrypoint = this.httpsEntrypoint().trim();
     const certResolver = this.certResolver().trim();
-    const servicePort = this.servicePort().trim();
+    const servicePort = this.servicePort().toString().trim();
     const traefikNetwork = this.traefikNetwork().trim();
 
     arr.push('traefik.enable=true');
@@ -84,7 +84,7 @@ export class LabelGeneratorComponent {
       this.serviceName(),
       this.subdomain(),
       this.domain(),
-      this.servicePort(),
+      this.servicePort().toString(),
       this.httpEntrypoint(),
       this.httpsEntrypoint(),
       this.certResolver(),
